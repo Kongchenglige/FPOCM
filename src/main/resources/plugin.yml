@@ -1,0 +1,5 @@
+name: FPOCM
+version: '${project.version}'
+main: cn.iasoc.fpocm.FPOCM
+api-version: '1.20'
+folia-supported: true
