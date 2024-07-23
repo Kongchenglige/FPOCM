@@ -37,6 +37,19 @@
             <goals>
               <goal>shade</goal>
             </goals>
+              <configuration>
+                  <filters>
+                      <filter>
+                          <artifact>*:*</artifact>
+                          <excludes>
+                              <exclude>META-INF/*.SF</exclude>
+                              <exclude>META-INF/*.DSA</exclude>
+                              <exclude>META-INF/*.RSA</exclude>
+                          </excludes>
+                      </filter>
+                  </filters>
+                  <createDependencyReducedPom>false</createDependencyReducedPom>
+              </configuration>
           </execution>
         </executions>
       </plugin>
@@ -58,6 +71,10 @@
           <id>sonatype</id>
           <url>https://oss.sonatype.org/content/groups/public/</url>
       </repository>
+      <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
+      </repository>
   </repositories>
 
   <dependencies>
@@ -66,6 +83,12 @@
           <artifactId>paper-api</artifactId>
           <version>1.20.1-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.github.Anon8281</groupId>
+          <artifactId>UniversalScheduler</artifactId>
+          <version>0.1.6</version>
+          <scope>compile</scope>
       </dependency>
   </dependencies>
 </project>

@@ -86,8 +86,8 @@ public class EventListener implements Listener {
         }
         if (item.getType().toString().equals("SHIELD")) {
             event.getWhoClicked().sendMessage("§c[FPOCM] 你不能使用盾牌！");
-            // Cancel the event
-            event.setCancelled(true);
+            // remove the item
+            event.getWhoClicked().getInventory().remove(item);
         }
         modifyItem(item);
         modifyItem(event.getCursor());
@@ -183,14 +183,14 @@ public class EventListener implements Listener {
             item.setItemMeta(meta);
         }
         // If item is sword, add 310% knock back distance
-        if (item.getType().toString().endsWith("SWORD")) {
-            // Get the item's meta
-            AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback", 3.1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-            assert meta != null;
-            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", ItemsMeta.get(item.getType().toString()), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
-            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, modifier);
-            item.setItemMeta(meta);
-        }
+//        if (item.getType().toString().endsWith("SWORD")) {
+//            // Get the item's meta
+//            AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.knockback", 3.1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+//            assert meta != null;
+//            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", ItemsMeta.get(item.getType().toString()), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND));
+//            meta.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, modifier);
+//            item.setItemMeta(meta);
+//        }
         // If item is netherite armor, remove knock back resistance
         if (item.getType().toString().contains("NETHERITE")) {
             // Get the item's meta
